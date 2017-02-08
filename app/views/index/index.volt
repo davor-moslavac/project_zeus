@@ -1,5 +1,5 @@
 {{ content() }}
-
+{#
 <header class="jumbotron subhead" id="overview">
 	<div class="hero-unit">
 		<h1>Welcome!</h1>
@@ -10,6 +10,9 @@
 		</div>
 	</div>
 </header>
+
+#}
+
 
 <div class="row">
 
