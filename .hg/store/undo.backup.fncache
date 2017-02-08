@@ -1,0 +1,16 @@
+data/vendor/embed/embed/src/Bag.php.i
+data/vendor/embed/embed/src/DataInterface.php.i
+data/vendor/embed/embed/src/Adapters/N500px.php.i
+data/vendor/embed/embed/src/Adapters/Youtube.php.i
+data/vendor/embed/embed/src/Adapters/Mit.php.i
+data/vendor/embed/embed/src/Adapters/Pastebin.php.i
+data/vendor/embed/embed/src/Adapters/Webpage.php.i
+data/vendor/embed/embed/src/Embed.php.i
+data/vendor/embed/embed/src/Adapters/Soundcloud.php.i
+data/vendor/embed/embed/src/Adapters/Spreaker.php.i
+data/vendor/embed/embed/src/Adapters/Parleys.php.i
+data/.gitattributes.i
+data/vendor/embed/embed/src/Adapters/Slides.php.i
+data/vendor/embed/embed/src/Adapters/Line.php.i
+data/vendor/embed/embed/src/Adapters/Sassmeister.php.i
+data/vendor/embed/embed/src/Adapters/Thematic.php.i
