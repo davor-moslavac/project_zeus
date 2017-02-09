@@ -23,7 +23,8 @@ class ControllerBase extends Controller
 
         $this->assets->collection('style')
                      ->addCss('/third-party/css/bootstrap.min.css', true, false)
-                     ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false);
+                     ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false)
+                     ->addCss('/css/style.css', true, false);
 
         $this->assets->collection('scripts')
                      ->addJs('/third-party/js/jquery-3.1.1.min.js', true, false)

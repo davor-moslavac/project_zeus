@@ -65,6 +65,7 @@ class UsersForm extends Form
                 'id',
                 'name'
             ],
+            'class' => 'form-control',
             'useEmpty' => true,
             'emptyText' => '...',
             'emptyValue' => ''
@@ -72,17 +73,20 @@ class UsersForm extends Form
 
         $this->add(new Select('banned', [
             'Y' => 'Yes',
-            'N' => 'No'
+            'N' => 'No',
+            'class' => 'form-control'
         ]));
 
         $this->add(new Select('suspended', [
             'Y' => 'Yes',
-            'N' => 'No'
+            'N' => 'No',
+            'class' => 'form-control'
         ]));
 
         $this->add(new Select('active', [
             'Y' => 'Yes',
-            'N' => 'No'
+            'N' => 'No',
+            'class' => 'form-control'
         ]));
     }
 }

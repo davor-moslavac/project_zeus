@@ -16,7 +16,7 @@ class ProfilesForm extends Form
         if (isset($options['edit']) && $options['edit']) {
             $id = new Hidden('id');
         } else {
-            $id = new Text('id');
+            $id = new Text('id', ['class' => 'form-control']);
         }
 
         $this->add($id);
@@ -36,7 +36,8 @@ class ProfilesForm extends Form
 
         $this->add(new Select('active', [
             'Y' => 'Yes',
-            'N' => 'No'
+            'N' => 'No',
+            'class' => 'form-control'
         ]));
     }
 }
