@@ -1,3 +1,5 @@
+{% set level = 'public' %}
+
 {% include "/components/Header.volt" %}
 
 <main class="container">
