@@ -18,7 +18,7 @@ class SignUpForm extends Form
 
     public function initialize($entity = null, $options = null)
     {
-        $name = new Text('name');
+        $name = new Text('name', ['class' => 'form-control']);
 
         $name->setLabel('Name');
 
@@ -31,7 +31,7 @@ class SignUpForm extends Form
         $this->add($name);
 
         // Email
-        $email = new Text('email');
+        $email = new Text('email', ['class' => 'form-control']);
 
         $email->setLabel('E-Mail');
 
@@ -47,7 +47,7 @@ class SignUpForm extends Form
         $this->add($email);
 
         // Password
-        $password = new Password('password');
+        $password = new Password('password', ['class' => 'form-control']);
 
         $password->setLabel('Password');
 
@@ -68,7 +68,7 @@ class SignUpForm extends Form
         $this->add($password);
 
         // Confirm Password
-        $confirmPassword = new Password('confirmPassword');
+        $confirmPassword = new Password('confirmPassword', ['class' => 'form-control']);
 
         $confirmPassword->setLabel('Confirm Password');
 
