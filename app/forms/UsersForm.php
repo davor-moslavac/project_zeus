@@ -19,13 +19,14 @@ class UsersForm extends Form
         if (isset($options['edit']) && $options['edit']) {
             $id = new Hidden('id');
         } else {
-            $id = new Text('id');
+            $id = new Text('id', ['class' => 'form-control']);
         }
 
         $this->add($id);
 
         $name = new Text('name', [
-            'placeholder' => 'Name'
+            'placeholder' => 'Name',
+            'class' => 'form-control'
         ]);
 
         $name->addValidators([
@@ -37,7 +38,8 @@ class UsersForm extends Form
         $this->add($name);
 
         $email = new Text('email', [
-            'placeholder' => 'Email'
+            'placeholder' => 'Email',
+            'class' => 'form-control'
         ]);
 
         $email->addValidators([

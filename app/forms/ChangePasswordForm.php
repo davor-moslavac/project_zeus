@@ -13,7 +13,7 @@ class ChangePasswordForm extends Form
     public function initialize()
     {
         // Password
-        $password = new Password('password');
+        $password = new Password('password', ['class' => 'form-control']);
 
         $password->addValidators([
             new PresenceOf([
@@ -32,7 +32,7 @@ class ChangePasswordForm extends Form
         $this->add($password);
 
         // Confirm Password
-        $confirmPassword = new Password('confirmPassword');
+        $confirmPassword = new Password('confirmPassword', ['class' => 'form-control']);
 
         $confirmPassword->addValidators([
             new PresenceOf([

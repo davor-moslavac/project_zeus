@@ -22,7 +22,8 @@ class ProfilesForm extends Form
         $this->add($id);
 
         $name = new Text('name', [
-            'placeholder' => 'Name'
+            'placeholder' => 'Name',
+            'class' => 'form-control'
         ]);
 
         $name->addValidators([

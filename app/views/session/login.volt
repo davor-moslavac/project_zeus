@@ -1,30 +1,45 @@
 {{ content() }}
 
-<div align="center" class="well">
-
-	{{ form('class': 'form-search') }}
-
-	<div align="left">
-		<h2>Log In</h2>
+<div class="row">
+	<div class="col-lg-12">
+		<h2>Login</h2>
 	</div>
+	
+	<div class="col-lg-12">
+		
+		{{ form('class': 'form-horizontal') }}
 
-		{{ form.render('email') }}
-		{{ form.render('password') }}
-		{{ form.render('go') }}
+		<div class="form-group">
+			<div class="col-lg-12">
+				{{ form.render('email') }}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-12">
+				{{ form.render('password') }}
+			</div>
 
-		<div align="center" class="remember">
-			{{ form.render('remember') }}
-			{{ form.label('remember') }}
+		</div>
+		<div class="form-group">
+			<div class="col-lg-12">
+				{{ form.render('go') }}
+			</div>
+
+		</div>
+		<div class="form-group">
+			<div class="col-lg-2">{{ form.label('remember') }}</div>
+			<div class="col-lg-10">
+				{{ form.render('remember') }}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-12">
+				{{ link_to("session/forgotPassword", "Forgot my password") }}
+			</div>
 		</div>
 
 		{{ form.render('csrf', ['value': security.getToken()]) }}
 
-		<hr>
-
-		<div class="forgot">
-			{{ link_to("session/forgotPassword", "Forgot my password") }}
-		</div>
-
-	</form>
-
+		</form>
+	</div>
 </div>
