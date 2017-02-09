@@ -21,6 +21,14 @@ class ControllerBase extends Controller
     {
         $controllerName = $dispatcher->getControllerName();
 
+        $this->assets->collection('style')
+                     ->addCss('/third-party/css/bootstrap.min.css', true, false)
+                     ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false);
+
+        $this->assets->collection('scripts')
+                     ->addJs('/third-party/js/jquery-3.1.1.min.js', true, false)
+                     ->addJs('/third-party/js/bootstrap.min.js', true, false);
+
         // Only check permissions on private controllers
         if ($this->acl->isPrivate($controllerName)) {
 

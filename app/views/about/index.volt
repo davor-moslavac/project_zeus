@@ -4,7 +4,7 @@
 	<div align="center">
 
 		<div align="left">
-			<h2>About this Demo</h2>
+			<h2>About this</h2>
 		</div>
 
 		<div align="left">
