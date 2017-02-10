@@ -17,6 +17,7 @@ class ProfilesForm extends FormBase
             $id = new Hidden('id');
         } else {
             $id = new Text('id', ['class' => 'form-control']);
+            $id->setLabel('Id');
         }
 
         $this->add($id);
@@ -26,6 +27,8 @@ class ProfilesForm extends FormBase
             'class' => 'form-control'
         ]);
 
+        $name->setLabel('Name');
+
         $name->addValidators([
             new PresenceOf([
                 'message' => 'The name is required'
@@ -34,10 +37,13 @@ class ProfilesForm extends FormBase
 
         $this->add($name);
 
-        $this->add(new Select('active', [
+        $active = new Select('active', [
             'Y' => 'Yes',
-            'N' => 'No',
-            'class' => 'form-control'
-        ]));
+            'N' => 'No'
+        ], ['class' => 'form-control']);
+
+        $active->setLabel('Active');
+
+        $this->add($active);
     }
 }
