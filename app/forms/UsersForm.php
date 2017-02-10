@@ -9,7 +9,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Vokuro\Models\Profiles;
 
-class UsersForm extends Form
+class UsersForm extends FormBase
 {
 
     public function initialize($entity = null, $options = null)
@@ -19,7 +19,7 @@ class UsersForm extends Form
         if (isset($options['edit']) && $options['edit']) {
             $id = new Hidden('id');
         } else {
-            $id = new Text('id', ['class' => 'form-control']);
+            $id = new Text('id', ['placeholder' => 'Id', 'class' => 'form-control']);
         }
 
         $this->add($id);
@@ -60,7 +60,7 @@ class UsersForm extends Form
             ]
         ]);
 
-        $this->add(new Select('profilesId', $profiles, [
+        $profilesId = new Select('profilesId', $profiles, [
             'using' => [
                 'id',
                 'name'
@@ -69,24 +69,40 @@ class UsersForm extends Form
             'useEmpty' => true,
             'emptyText' => '...',
             'emptyValue' => ''
-        ]));
+        ]);
 
-        $this->add(new Select('banned', [
+        $profilesId->setLabel('Profiles Id');
+
+        $this->add($profilesId);
+
+        $banned = new Select('banned', [
             'Y' => 'Yes',
             'N' => 'No',
             'class' => 'form-control'
-        ]));
+        ]);
 
-        $this->add(new Select('suspended', [
+        $profilesId->setLabel('Banned');
+
+        $this->add($profilesId);
+
+        $suspended = new Select('suspended', [
             'Y' => 'Yes',
             'N' => 'No',
             'class' => 'form-control'
-        ]));
+        ]);
 
-        $this->add(new Select('active', [
+        $suspended->setLabel('Suspended');
+
+        $this->add($suspended);
+
+        $active = new Select('active', [
             'Y' => 'Yes',
             'N' => 'No',
             'class' => 'form-control'
-        ]));
+        ]);
+
+        $suspended->setLabel('Active');
+
+        $this->add($active);
     }
 }

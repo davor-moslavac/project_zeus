@@ -11,7 +11,7 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Identical;
 
-class LoginForm extends Form
+class LoginForm extends FormBase
 {
 
     public function initialize()
