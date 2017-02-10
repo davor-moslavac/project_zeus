@@ -12,7 +12,7 @@ class FormBase extends \Phalcon\Forms\Form
      * Initialize CSRF
      * @author         
      * @version        1.0
-     * @since          0.1.0
+     * @since          1.0
      * @return         void
      */
     public function initialize()

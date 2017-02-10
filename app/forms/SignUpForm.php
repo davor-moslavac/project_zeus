@@ -94,20 +94,8 @@ class SignUpForm extends FormBase
 
         $this->add($terms);
 
-        // CSRF
-        // $csrf = new Hidden('csrf');
-
-        // $csrf->addValidator(new Identical([
-        //     'value' => $this->security->getSessionToken(),
-        //     'message' => 'CSRF validation failed'
-        // ]));
-
-        // $csrf->clear();
-
-        // $this->add($csrf);
-
         // Sign Up
-        $this->add(new Submit('Sign Up', [
+        $this->add(new Submit('sign', [
             'value' => 'Submit',
             'class' => 'btn btn-success'
         ]));

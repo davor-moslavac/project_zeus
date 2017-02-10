@@ -1,13 +1,14 @@
 <?php
 namespace Vokuro\Forms;
 
-use Phalcon\Forms\Form;
-use Phalcon\Forms\Element\Password;
-use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\StringLength;
-use Phalcon\Validation\Validator\Confirmation;
+use Phalcon\Forms\Form,
+    Phalcon\Forms\Element\Password,
+    Phalcon\Forms\Element\Submit,
+    Phalcon\Validation\Validator\PresenceOf,
+    Phalcon\Validation\Validator\StringLength,
+    Phalcon\Validation\Validator\Confirmation;
 
-class ChangePasswordForm extends Form
+class ChangePasswordForm extends FormBase
 {
 
     public function initialize()
@@ -29,6 +30,8 @@ class ChangePasswordForm extends Form
             ])
         ]);
 
+        $password->setLabel('Password');
+
         $this->add($password);
 
         // Confirm Password
@@ -40,6 +43,13 @@ class ChangePasswordForm extends Form
             ])
         ]);
 
+        $confirmPassword->setLabel('Confirm Password');
+
         $this->add($confirmPassword);
+
+        $this->add(new Submit('save', [
+            'value' => 'Save',
+            'class' => 'btn btn-success'
+        ]));
     }
 }
