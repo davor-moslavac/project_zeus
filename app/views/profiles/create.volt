@@ -17,16 +17,6 @@
 
     {% include "components/Form.volt" %}
 
-<!--     <div class="clearfix">
-        <label for="name">Name</label>
-        {{ form.render("name") }}
-    </div>
-
-    <div class="clearfix">
-        <label for="active">Active?</label>
-        {{ form.render("active") }}
-    </div> -->
-
 </div>
 
 </form>

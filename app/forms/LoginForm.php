@@ -56,19 +56,8 @@ class LoginForm extends FormBase
 
         $this->add($remember);
 
-        // CSRF
-        $csrf = new Hidden('csrf');
-
-        $csrf->addValidator(new Identical([
-            'value' => $this->security->getSessionToken(),
-            'message' => 'CSRF validation failed'
-        ]));
-
-        $csrf->clear();
-
-        $this->add($csrf);
-
         $this->add(new Submit('go', [
+            'value' => 'Submit',
             'class' => 'btn btn-success'
         ]));
     }

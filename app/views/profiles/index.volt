@@ -4,6 +4,8 @@
     {{ link_to("profiles/create", "<i class='icon-plus-sign'></i> Create Profiles", "class": "btn btn-primary") }}
 </div>
 
+<!-- Fix this -->
+
 <form method="post" action="{{ url("profiles/search") }}" autocomplete="off">
 
     <div class="center scaffold">

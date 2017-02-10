@@ -19,6 +19,7 @@ class FormBase extends \Phalcon\Forms\Form
     {
         $csrf = new Hidden('csrf', ['name' => $this->security->getTokenKey()]);
         $csrf->addValidator(new Identical(['value' => $this->security->getSessionToken(),'message' => 'CSRF validation failed']));
+        $csrf->clear();
         $this->add($csrf);
     }
 

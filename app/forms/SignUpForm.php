@@ -13,7 +13,7 @@ use Phalcon\Validation\Validator\Identical;
 use Phalcon\Validation\Validator\StringLength;
 use Phalcon\Validation\Validator\Confirmation;
 
-class SignUpForm extends Form
+class SignUpForm extends FormBase
 {
 
     public function initialize($entity = null, $options = null)
@@ -95,19 +95,20 @@ class SignUpForm extends Form
         $this->add($terms);
 
         // CSRF
-        $csrf = new Hidden('csrf');
+        // $csrf = new Hidden('csrf');
 
-        $csrf->addValidator(new Identical([
-            'value' => $this->security->getSessionToken(),
-            'message' => 'CSRF validation failed'
-        ]));
+        // $csrf->addValidator(new Identical([
+        //     'value' => $this->security->getSessionToken(),
+        //     'message' => 'CSRF validation failed'
+        // ]));
 
-        $csrf->clear();
+        // $csrf->clear();
 
-        $this->add($csrf);
+        // $this->add($csrf);
 
         // Sign Up
         $this->add(new Submit('Sign Up', [
+            'value' => 'Submit',
             'class' => 'btn btn-success'
         ]));
     }

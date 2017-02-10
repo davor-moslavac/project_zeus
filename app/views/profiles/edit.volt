@@ -25,17 +25,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="A">
 
-                {{ form.render("id") }}
-
-                <div class="clearfix">
-                    <label for="name">Name</label>
-                    {{ form.render("name") }}
-                </div>
-
-                <div class="clearfix">
-                    <label for="active">Active?</label>
-                    {{ form.render("active") }}
-                </div>
+                {% include "components/Form.volt" %}
 
             </div>
 
