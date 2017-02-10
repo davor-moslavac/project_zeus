@@ -8,7 +8,7 @@ use Phalcon\Forms\Element\Select;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 
-class ProfilesForm extends Form
+class ProfilesForm extends FormBase
 {
 
     public function initialize($entity = null, $options = null)

@@ -15,7 +15,9 @@
 <div class="center scaffold">
     <h2>Create a Profile</h2>
 
-    <div class="clearfix">
+    {% include "components/Form.volt" %}
+
+<!--     <div class="clearfix">
         <label for="name">Name</label>
         {{ form.render("name") }}
     </div>
@@ -23,7 +25,7 @@
     <div class="clearfix">
         <label for="active">Active?</label>
         {{ form.render("active") }}
-    </div>
+    </div> -->
 
 </div>
 

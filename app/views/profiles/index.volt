@@ -9,8 +9,10 @@
     <div class="center scaffold">
 
         <h2>Search profiles</h2>
+        
+        {% include "components/Form.volt" %}
 
-        <div class="clearfix">
+<!--         <div class="clearfix">
             <label for="id">Id</label>
             {{ form.render("id") }}
         </div>
@@ -22,7 +24,7 @@
 
         <div class="clearfix">
             {{ submit_button("Search", "class": "btn btn-primary") }}
-        </div>
+        </div> -->
 
     </div>
 
