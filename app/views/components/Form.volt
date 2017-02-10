@@ -1,4 +1,4 @@
-<form class="{% if form.name is defined %}{{form.name}} {% endif %}form-horizontal" method="POST" enctype="multipart/form-data">
+<form class="{% if form.name is defined %}{{form.name}} {% endif %}form-horizontal" {% if form.action is defined %}action="{{form.action}}"{% endif %} method="POST" enctype="multipart/form-data">
 
 {% for element in form %}
 

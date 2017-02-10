@@ -15,6 +15,8 @@ class UsersForm extends FormBase
     public function initialize($entity = null, $options = null)
     {
 
+        //$this->setAction('/profiles/search');
+
         // In edition the id is hidden
         if (isset($options['edit']) && $options['edit']) {
             $id = new Hidden('id');

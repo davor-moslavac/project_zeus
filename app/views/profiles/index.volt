@@ -6,10 +6,10 @@
 
 <!-- Fix this -->
 
-<form method="post" action="{{ url("profiles/search") }}" autocomplete="off">
+<!-- <form method="post" action="{{ url("profiles/search") }}" autocomplete="off">
 
     <div class="center scaffold">
-
+ -->
         <h2>Search profiles</h2>
         
         {% include "components/Form.volt" %}
@@ -27,7 +27,7 @@
         <div class="clearfix">
             {{ submit_button("Search", "class": "btn btn-primary") }}
         </div> -->
-
+<!-- 
     </div>
 
-</form>
+</form> -->
