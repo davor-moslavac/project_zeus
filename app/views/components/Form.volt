@@ -17,20 +17,6 @@
 			</div>
 		</div>
 
-	{% elseif type is 'cancel' %}
-		<div class="form-group form-group-inline">
-			<div class="col-xs-12 pad-10">
-				{{element}}
-			</div>
-		</div>
-
-	{% elseif type is 'next' %}
-		<div class="form-group form-group-inline">
-			<div class="col-xs-12 pad-10">
-				{{element}}
-			</div>
-		</div>
-
 	{% elseif type is 'radio' %}
 
 		<div class="form-group">
@@ -42,13 +28,22 @@
 			</div>
 		</div>
 
-	{% else %}
-
+	{% elseif type is 'checkbox' %}
 		<div class="form-group">
 			<div class="col-xs-12 pad-10">
+
+				<label {% if messages|length > 0 %}class="error" {% endif %}for="{{element.getName()}}">{{element.getLabel()}}{% if messages|length > 0 %} ({% for message in messages %}<?php echo $t->_((string) $message) ?>{% endfor %}) {% endif %}</label>
+				{{element}}
+			</div>
+		</div>
+
+	{% else %}
+
+		<div class="form-group" data-id="{{element.type}}">
+			<div class="col-lg-3 col-md-3 col-sm-4">
 				<label {% if messages|length > 0 %}class="error" {% endif %}for="{{element.getName()}}">{{element.getLabel()}}{% if messages|length > 0 %} ({% for message in messages %}<?php echo $t->_((string) $message) ?>{% endfor %}) {% endif %}</label>
 			</div>
-			<div class="col-xs-12 pad-10">
+			<div class="col-lg-9 col-md-9 col-sm-8">
 				{{element}}
 			</div>
 		</div>
