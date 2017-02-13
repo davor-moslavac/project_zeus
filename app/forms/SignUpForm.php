@@ -18,6 +18,8 @@ class SignUpForm extends FormBase
 
     public function initialize($entity = null, $options = null)
     {
+        //$this->setAction('/profiles/search');
+
         $name = new Text('name', ['class' => 'form-control']);
 
         $name->setLabel('Name');

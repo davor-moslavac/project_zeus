@@ -31,6 +31,8 @@ class LoginForm extends FormBase
             ])
         ]);
 
+        $email->setLabel('Email');
+
         $this->add($email);
 
         // Password
@@ -42,6 +44,8 @@ class LoginForm extends FormBase
         $password->addValidator(new PresenceOf([
             'message' => 'The password is required'
         ]));
+
+        $password->setLabel('Password');
 
         $password->clear();
 
