@@ -17,7 +17,6 @@
 			<ul class="nav navbar-nav">
 
 				{%- set menus = [
-				'Home': 'index',
 				'About': 'about'
 				] -%}
 
@@ -70,7 +69,6 @@
 			<ul class="nav navbar-nav">
 
 				{%- set menus = [
-				'Home': null,
 				'Users': 'users',
 				'Profiles': 'profiles',
 				'Permissions': 'permissions'

@@ -1,8 +1,11 @@
-<footer class="container">
-	Sample footer
+<footer class="main">
+	<div class="container">
+		Sample footer
 
-	    {{ link_to("privacy", "Privacy Policy") }}
-	    {{ link_to("terms", "Terms") }}
+		    {{ link_to("privacy", "Privacy Policy") }}
+		    {{ link_to("terms", "Terms") }}
 
-	© {{ date("Y") }} Moki i Denis.
+		© {{ date("Y") }} Moki i Denis.		
+	</div>
+
 </footer>

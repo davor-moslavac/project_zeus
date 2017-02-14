@@ -1,7 +1,14 @@
-body {
-	font-family: 'Roboto', sans-serif;
+html {
+	position: relative;
+	min-height: 100%;
 }
 
 .navbar {
 	border-radius: 0;
+}
+
+footer.main {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
