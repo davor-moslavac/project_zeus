@@ -15,7 +15,7 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-
+				{#
 				{%- set menus = [
 				'About': 'about'
 				] -%}
@@ -27,7 +27,7 @@
 				<li>{{ link_to(value, key) }}</li>
 				{% endif %}
 				{%- endfor -%}
-				
+				#}
 				<!-- Get data from DB -->
 
 				<li class="dropdown">
@@ -47,6 +47,31 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
+				{#
+				<form action="#" method="get" class="searchform navbar-form navbar-left" role="search">
+					<input type="hidden" value="search" name="view">
+					<div class="input-group">
+						<input type="text"  name="searchword" required class="form-control" placeholder="Search" name="q">
+						<div class="input-group-btn">
+							<a href="#" class="btn btn-default dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdownSearch">
+								<li><a href="#">All</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Movies</a></li>
+								<li><a href="#">TV Shows</a></li>
+								<li><a href="#">Anime</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Users</a></li>
+							</ul>
+						</div>
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">Search</button>
+						</div>
+					</div>
+				</form>
+				#}
+				{#
 				<form class="navbar-form navbar-left">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
@@ -69,6 +94,7 @@
 					<button id="btnSearch" type="submit" class="btn btn-default">Search</button>
 					{{ link_to('search', 'advanced') }}
 				</form>
+				#}
 				{%- if not(logged_in is empty) %}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" id="dropdownMessages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
