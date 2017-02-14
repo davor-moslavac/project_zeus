@@ -29,7 +29,8 @@ class ControllerBase extends Controller
 
         $this->assets->collection('scripts')
                      ->addJs('/third-party/js/jquery-3.1.1.min.js', true, false)
-                     ->addJs('/third-party/js/bootstrap.min.js', true, false);
+                     ->addJs('/third-party/js/bootstrap.min.js', true, false)
+                     ->addJs('/js/script.js', true, false);
 
         // Only check permissions on private controllers
         if ($this->acl->isPrivate($controllerName)) {

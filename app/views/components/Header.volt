@@ -27,19 +27,61 @@
 				<li>{{ link_to(value, key) }}</li>
 				{% endif %}
 				{%- endfor -%}
+				
+				<!-- Get data from DB -->
 
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" id="dropdownBrowse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Browse
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownBrowse">
+						<li><a href="#">All</a></li>
+						<li><a href="#">Movies</a></li>
+						<li><a href="#">TV Shows</a></li>
+						<li><a href="#">Anime</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Users</a></li>
+					</ul>
+				</li>
 			</ul>
 
-
-			<form class="navbar-form navbar-left">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
-
 			<ul class="nav navbar-nav navbar-right">
+				<form class="navbar-form navbar-left">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<div class="form-group dropdown">
+						<a href="#" class="dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							Dropdown
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownSearch">
+							<li><a href="#">All</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Movies</a></li>
+							<li><a href="#">TV Shows</a></li>
+							<li><a href="#">Anime</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Users</a></li>
+						</ul>
+					</div>
+					<button id="btnSearch" type="submit" class="btn btn-default">Search</button>
+					{{ link_to('search', 'advanced') }}
+				</form>
 				{%- if not(logged_in is empty) %}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" id="dropdownMessages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Messages
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMessages">
+						<li><a href="#">Message #1</a></li>
+						<li><a href="#">Message #2</a></li>
+						<li><a href="#">Message #3</a></li>
+						<li><a href="#">Message #4</a></li>
+					</ul>
+				</li>
 				<li>{{ link_to('users', 'Users Panel') }}</li>
 				<li>{{ link_to('session/logout', 'Logout') }}</li>
 				{% else %}
