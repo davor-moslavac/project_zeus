@@ -80,8 +80,7 @@ class UsersForm extends FormBase
         $banned = new Select('banned', [
             'Y' => 'Yes',
             'N' => 'No',
-            'class' => 'form-control'
-        ]);
+        ], ['class' => 'form-control']);
 
         $profilesId->setLabel('Banned');
 
@@ -90,8 +89,7 @@ class UsersForm extends FormBase
         $suspended = new Select('suspended', [
             'Y' => 'Yes',
             'N' => 'No',
-            'class' => 'form-control'
-        ]);
+        ], ['class' => 'form-control']);
 
         $suspended->setLabel('Suspended');
 
@@ -100,8 +98,7 @@ class UsersForm extends FormBase
         $active = new Select('active', [
             'Y' => 'Yes',
             'N' => 'No',
-            'class' => 'form-control'
-        ]);
+        ], ['class' => 'form-control']);
 
         $suspended->setLabel('Active');
 
