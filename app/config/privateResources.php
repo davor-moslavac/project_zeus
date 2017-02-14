@@ -24,4 +24,4 @@ return new Config([
             'index'
         ]
     ]
-]);
+    ]);

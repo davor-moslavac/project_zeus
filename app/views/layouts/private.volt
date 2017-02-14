@@ -3,7 +3,7 @@
 {% include "/components/Header.volt" %}
 
 <main class="container">
-  {{ content() }}
+	{{ content() }}
 </main>
 
 {% include "/components/Footer.volt" %}

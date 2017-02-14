@@ -22,15 +22,15 @@ class ControllerBase extends Controller
         $controllerName = $dispatcher->getControllerName();
 
         $this->assets->collection('style')
-                     ->addCss('/third-party/css/bootstrap.min.css', true, false)
-                     ->addCss('/third-party/css/theme.min.css', true, false)
-                     ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false)
-                     ->addCss('/css/style.css', true, false);
+                    ->addCss('/third-party/css/bootstrap.min.css', true, false)
+                    ->addCss('/third-party/css/theme.min.css', true, false)
+                    ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false)
+                    ->addCss('/css/style.css', true, false);
 
         $this->assets->collection('scripts')
-                     ->addJs('/third-party/js/jquery-3.1.1.min.js', true, false)
-                     ->addJs('/third-party/js/bootstrap.min.js', true, false)
-                     ->addJs('/js/script.js', true, false);
+                    ->addJs('/third-party/js/jquery-3.1.1.min.js', true, false)
+                    ->addJs('/third-party/js/bootstrap.min.js', true, false)
+                    ->addJs('/js/script.js', true, false);
 
         // Only check permissions on private controllers
         if ($this->acl->isPrivate($controllerName)) {
@@ -46,7 +46,7 @@ class ControllerBase extends Controller
                 $dispatcher->forward([
                     'controller' => 'index',
                     'action' => 'index'
-                ]);
+                    ]);
                 return false;
             }
 
@@ -60,12 +60,12 @@ class ControllerBase extends Controller
                     $dispatcher->forward([
                         'controller' => $controllerName,
                         'action' => 'index'
-                    ]);
+                        ]);
                 } else {
                     $dispatcher->forward([
                         'controller' => 'user_control',
                         'action' => 'index'
-                    ]);
+                        ]);
                 }
 
                 return false;
