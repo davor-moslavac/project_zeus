@@ -71,5 +71,7 @@ class ControllerBase extends Controller
                 return false;
             }
         }
+
+        $this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
     }
 }

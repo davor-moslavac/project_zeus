@@ -36,24 +36,32 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownBrowse">
-						<li><a href="#">All</a></li>
-						<li><a href="#">Movies</a></li>
-						<li><a href="#">TV Shows</a></li>
-						<li><a href="#">Anime</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Users</a></li>
+						{%- set media = [
+						'All': '/media',
+						'Movies': '/media/movies',
+						'TV Shows': '/media/tvshows',
+						'Animes': '/media/animes'
+						] -%}
+
+						{%- for key, value in media %}
+						{% if value == dispatcher.getControllerName() %}
+						<li class="active">{{ link_to(value, key) }}</li>
+						{% else %}
+						<li>{{ link_to(value, key) }}</li>
+						{% endif %}
+						{%- endfor -%}
 					</ul>
 				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				{#
+				
 				<form action="#" method="get" class="searchform navbar-form navbar-left" role="search">
 					<input type="hidden" value="search" name="view">
 					<div class="input-group">
 						<input type="text"  name="searchword" required class="form-control" placeholder="Search" name="q">
 						<div class="input-group-btn">
-							<a href="#" class="btn btn-default dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="caret"></span>
+							<a href="#" class="btn btn-default dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Category <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdownSearch">
 								<li><a href="#">All</a></li>
@@ -70,7 +78,7 @@
 						</div>
 					</div>
 				</form>
-				#}
+				
 				{#
 				<form class="navbar-form navbar-left">
 					<div class="form-group">
