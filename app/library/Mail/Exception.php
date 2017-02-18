@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Mail;
+namespace MediaRatings\Mail;
 
 class Exception extends \Exception
 {

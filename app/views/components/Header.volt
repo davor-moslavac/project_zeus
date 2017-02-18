@@ -61,6 +61,13 @@
 					<div class="input-group">
 						<input type="text"  name="searchword" required class="form-control" placeholder="Search" name="q">
 						<div class="input-group-btn">
+							<select class="form-control">
+								<option value="all">All</option>
+								<option value="movies">Movies</option>
+								<option value="tvshows">TV Shows</option>
+								<option value="anime">Anime</option>
+							</select>
+							{#
 							<a href="#" class="btn btn-default dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Category <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdownSearch">
@@ -72,9 +79,10 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Users</a></li>
 							</ul>
+							#}
 						</div>
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">Search</button>
+							<button class="btn btn-primary" type="submit">Search</button>
 						</div>
 					</div>
 				</form>

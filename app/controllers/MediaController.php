@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
 /**
  * Display the "About" page.
@@ -45,4 +45,6 @@ class MediaController extends ControllerBase
     {
         $this->view->title = "Anime";
     }
+
+    
 }

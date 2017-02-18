@@ -1,6 +1,6 @@
 <?php
 
-namespace Vokuro\Forms;
+namespace MediaRatings\Forms;
 
 use Phalcon\Forms\Element\Hidden,
     Phalcon\Validation\Validator\Identical;

@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
 /**
  * Display the default index page.

@@ -8,7 +8,7 @@
 -- PHP Version: 5.5.7
 
 --
--- Database: `vokuro`
+-- Database: `MediaRatings`
 --
 
 -- --------------------------------------------------------

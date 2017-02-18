@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		{% include "scripts/googleAds.volt" %}
-		<title>Welcome</title>
+
+		<title>Media Ratings</title>
    		{{ assets.outputCss('style') }}
 	</head>
 	<body>

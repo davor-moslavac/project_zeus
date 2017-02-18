@@ -1,16 +1,16 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
 use Phalcon\Tag;
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Paginator\Adapter\Model as Paginator;
-use Vokuro\Forms\ChangePasswordForm;
-use Vokuro\Forms\UsersForm;
-use Vokuro\Models\Users;
-use Vokuro\Models\PasswordChanges;
+use MediaRatings\Forms\ChangePasswordForm;
+use MediaRatings\Forms\UsersForm;
+use MediaRatings\Models\Users;
+use MediaRatings\Models\PasswordChanges;
 
 /**
- * Vokuro\Controllers\UsersController
+ * MediaRatings\Controllers\UsersController
  * CRUD to manage users
  */
 class UsersController extends ControllerBase
@@ -37,7 +37,7 @@ class UsersController extends ControllerBase
     {
         $numberPage = 1;
         if ($this->request->isPost()) {
-            $query = Criteria::fromInput($this->di, 'Vokuro\Models\Users', $this->request->getPost());
+            $query = Criteria::fromInput($this->di, 'MediaRatings\Models\Users', $this->request->getPost());
             $this->persistent->searchParams = $query->getParams();
         } else {
             $numberPage = $this->request->getQuery("page", "int");

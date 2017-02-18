@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Models;
+namespace MediaRatings\Models;
 
 use Phalcon\Mvc\Model;
 

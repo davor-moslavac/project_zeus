@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
 /**
  * Display the terms and conditions page.

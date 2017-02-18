@@ -1,24 +1,20 @@
 {
-    "name": "phalcon/vokuro",
-    "description": "This is a sample application for the Phalcon PHP Framework",
-    "version": "1.2.0",
+    "name": "MediaRatings",
+    "description": "Social network for media content",
+    "version": "1.0.0",
     "keywords": [
-        "phalcon",
-        "framework",
-        "sample app",
-        "vokuro"
+        "MediaRatings"
     ],
     "type": "library",
-    "license": "BSD-3",
-    "homepage": "http://www.phalconphp.com",
+    "homepage": "",
     "authors" : [
         {
-            "name" : "Andres Gutierrez",
-            "email" : "andres@phalconphp.com"
+            "name" : "Davor Moslavac",
+            "email" : "davor.moslavac@gmail.com"
         },
         {
-            "name" : "Mark Garrett",
-            "email" : "mark@moderndeveloperllc.com"
+            "name" : "Denis Bračun",
+            "email" : ""
         }
     ],
     "require": {

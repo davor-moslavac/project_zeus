@@ -1,8 +1,8 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
-use Vokuro\Models\EmailConfirmations;
-use Vokuro\Models\ResetPasswords;
+use MediaRatings\Models\EmailConfirmations;
+use MediaRatings\Models\ResetPasswords;
 
 /**
  * UserControlController

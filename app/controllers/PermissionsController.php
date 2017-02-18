@@ -1,8 +1,8 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
-use Vokuro\Models\Profiles;
-use Vokuro\Models\Permissions;
+use MediaRatings\Models\Profiles;
+use MediaRatings\Models\Permissions;
 
 /**
  * View and define permissions for the various profile levels.

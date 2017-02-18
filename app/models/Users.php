@@ -1,12 +1,12 @@
 <?php
-namespace Vokuro\Models;
+namespace MediaRatings\Models;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
 /**
- * Vokuro\Models\Users
+ * MediaRatings\Models\Users
  * All the users registered in the application
  */
 class Users extends Model

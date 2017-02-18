@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Auth;
+namespace MediaRatings\Auth;
 
 class Exception extends \Exception
 {

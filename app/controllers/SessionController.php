@@ -1,12 +1,12 @@
 <?php
-namespace Vokuro\Controllers;
+namespace MediaRatings\Controllers;
 
-use Vokuro\Forms\LoginForm;
-use Vokuro\Forms\SignUpForm;
-use Vokuro\Forms\ForgotPasswordForm;
-use Vokuro\Auth\Exception as AuthException;
-use Vokuro\Models\Users;
-use Vokuro\Models\ResetPasswords;
+use MediaRatings\Forms\LoginForm;
+use MediaRatings\Forms\SignUpForm;
+use MediaRatings\Forms\ForgotPasswordForm;
+use MediaRatings\Auth\Exception as AuthException;
+use MediaRatings\Models\Users;
+use MediaRatings\Models\ResetPasswords;
 
 /**
  * Controller used handle non-authenticated session actions like login/logout, user signup, and forgotten passwords

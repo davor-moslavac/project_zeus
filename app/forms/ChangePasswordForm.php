@@ -1,5 +1,5 @@
 <?php
-namespace Vokuro\Forms;
+namespace MediaRatings\Forms;
 
 use Phalcon\Forms\Form,
     Phalcon\Forms\Element\Password,

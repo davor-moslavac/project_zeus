@@ -10,9 +10,9 @@ use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
 use Phalcon\Logger\Adapter\File as FileLogger;
 use Phalcon\Logger\Formatter\Line as FormatterLine;
-use Vokuro\Auth\Auth;
-use Vokuro\Acl\Acl;
-use Vokuro\Mail\Mail;
+use MediaRatings\Auth\Auth;
+use MediaRatings\Acl\Acl;
+use MediaRatings\Mail\Mail;
 
 /**
  * Register the global configuration as config
@@ -117,7 +117,7 @@ $di->set('crypt', function () {
  */
 $di->set('dispatcher', function () {
     $dispatcher = new Dispatcher();
-    $dispatcher->setDefaultNamespace('Vokuro\Controllers');
+    $dispatcher->setDefaultNamespace('MediaRatings\Controllers');
     return $dispatcher;
 });
 
