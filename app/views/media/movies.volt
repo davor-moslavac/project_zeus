@@ -1,1 +1,1 @@
-{% include "components/ListMedia.volt" %}
+{% include "components/ListContent.volt" %}

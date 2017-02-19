@@ -42,8 +42,20 @@
 						'TV Shows': '/media/tvshows',
 						'Animes': '/media/animes'
 						] -%}
+ 
+						{%- set social = [
+						'Users': '/social/'
+						] -%}
 
 						{%- for key, value in media %}
+						{% if value == dispatcher.getControllerName() %}
+						<li class="active">{{ link_to(value, key) }}</li>
+						{% else %}
+						<li>{{ link_to(value, key) }}</li>
+						{% endif %}
+						{%- endfor -%}
+						<li class="divider"></li>
+						{%- for key, value in social %}
 						{% if value == dispatcher.getControllerName() %}
 						<li class="active">{{ link_to(value, key) }}</li>
 						{% else %}
@@ -62,10 +74,15 @@
 						<input type="text"  name="searchword" required class="form-control" placeholder="Search" name="q">
 						<div class="input-group-btn">
 							<select class="form-control">
-								<option value="all">All</option>
-								<option value="movies">Movies</option>
-								<option value="tvshows">TV Shows</option>
-								<option value="anime">Anime</option>
+								<optgroup label="Media">
+									<option value="all">All</option>
+									<option value="movies">Movies</option>
+									<option value="tvshows">TV Shows</option>
+									<option value="anime">Anime</option>
+								</optgroup>
+								<optgroup label="Social">
+									<option value="user">Users</option>
+								</optgroup>
 							</select>
 							{#
 							<a href="#" class="btn btn-default dropdown-toggle" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Category <span class="caret"></span>
