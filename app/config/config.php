@@ -46,5 +46,11 @@ return new Config([
         'filename' => 'application.log',
     ],
     // Set to false to disable sending emails (for use in test environment)
-    'useMail' => false
+    'useMail' => false,
+    'movieDatabase' =>
+    [
+        'apiKey' => 'd939353f7e926e52ce71066b87971f5d',
+        'apiBaseUrl' => 'https://api.themoviedb.org/3/',
+        'image_url' => 'http://image.tmdb.org/t/p/original/' //copied from configurattion response
+    ]
 ]);
