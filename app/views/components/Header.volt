@@ -139,6 +139,8 @@
 						<li><a href="#">Message #2</a></li>
 						<li><a href="#">Message #3</a></li>
 						<li><a href="#">Message #4</a></li>
+						<li class="divider"></li>
+						<li><a href="/social/messages">All messages</a></li>
 					</ul>
 				</li>
 				<li>{{ link_to('users', 'Users Panel') }}</li>

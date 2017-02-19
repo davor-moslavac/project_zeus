@@ -7,6 +7,7 @@ use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Element\Password;
 use Phalcon\Forms\Element\Submit;
 use Phalcon\Forms\Element\Check;
+use Phalcon\Forms\Element\File;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\Identical;
@@ -47,6 +48,12 @@ class SignUpForm extends FormBase
         ]);
 
         $this->add($email);
+
+
+        $img = new File('img', ['class' => 'form-control']);
+        $img->setLabel('Avatar');
+        
+        $this->add($img);
 
         // Password
         $password = new Password('password', ['class' => 'form-control']);
