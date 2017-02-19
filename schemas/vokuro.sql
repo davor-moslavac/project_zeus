@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `mustChangePassword`, `profilesId`, `banned`, `suspended`, `active`) VALUES
-(1, 'Bob Burnquist', 'bob@phalconphp.com', '$2a$08$Lx1577KNhPa9lzFYKssadetmbhaveRtCoVaOnoXXxUIhrqlCJYWCW', `goku-58a9c6d0a9f52.png`, 'N', 1, 'N', 'N', 'Y'),
-(2, 'Erik', 'erik@phalconphp.com', '$2a$08$f4llgFQQnhPKzpGmY1sOuuu23nYfXYM/EVOpnjjvAmbxxDxG3pbX.', `goku-58a9c6d0a9f52.png`, 'N', 1, 'Y', 'Y', 'Y'),
-(3, 'Veronica', 'veronica@phalconphp.com', '$2a$08$NQjrh9fKdMHSdpzhMj0xcOSwJQwMfpuDMzgtRyA89ADKUbsFZ94C2', `goku-58a9c6d0a9f52.png`, 'N', 1, 'N', 'N', 'Y'),
-(4, 'Yukimi Nagano', 'yukimi@phalconphp.com', '$2a$08$cxxpy4Jvt6Q3xGKgMWIILuf75RQDSroenvoB7L..GlXoGkVEMoSr.', `goku-58a9c6d0a9f52.png`, 'N', 1, 'N', 'N', 'Y');
+(1, 'Bob Burnquist', 'bob@phalconphp.com', '$2a$08$Lx1577KNhPa9lzFYKssadetmbhaveRtCoVaOnoXXxUIhrqlCJYWCW', 'goku-58a9c6d0a9f52.png', 'N', 1, 'N', 'N', 'Y'),
+(2, 'Erik', 'erik@phalconphp.com', '$2a$08$f4llgFQQnhPKzpGmY1sOuuu23nYfXYM/EVOpnjjvAmbxxDxG3pbX.', 'goku-58a9c6d0a9f52.png', 'N', 1, 'Y', 'Y', 'Y'),
+(3, 'Veronica', 'veronica@phalconphp.com', '$2a$08$NQjrh9fKdMHSdpzhMj0xcOSwJQwMfpuDMzgtRyA89ADKUbsFZ94C2', 'goku-58a9c6d0a9f52.png', 'N', 1, 'N', 'N', 'Y'),
+(4, 'Yukimi Nagano', 'yukimi@phalconphp.com', '$2a$08$cxxpy4Jvt6Q3xGKgMWIILuf75RQDSroenvoB7L..GlXoGkVEMoSr.', 'goku-58a9c6d0a9f52.png', 'N', 1, 'N', 'N', 'Y');

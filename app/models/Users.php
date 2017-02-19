@@ -72,6 +72,22 @@ class Users extends Model
      */
     public $active;
 
+
+    public function columnMap() {
+        return array(
+            'id' => 'id',
+            'name' => 'name',
+            'email' => 'email',
+            'password' => 'password',
+            'img' => 'img',
+            'mustChangePassword' => 'mustChangePassword',
+            'profilesId' => 'profilesId',
+            'banned' => 'banned',
+            'suspended' => 'suspended',
+            'active' => 'active',
+        );
+    }
+
     /**
      * Before create the user assign a password
      */
@@ -173,5 +189,10 @@ class Users extends Model
                 'message' => 'User cannot be deleted because he/she has activity in the system'
             ]
         ]);
+    }
+
+    public static function find($parameters = null)
+    {
+        return parent::find($parameters);
     }
 }

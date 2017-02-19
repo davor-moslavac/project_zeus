@@ -85,12 +85,12 @@ $di->set('db', function () {
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
-$di->set('modelsMetadata', function () {
-    $config = $this->getConfig();
-    return new MetaDataAdapter([
-        'metaDataDir' => $config->application->cacheDir . 'metaData/'
-    ]);
-});
+// $di->set('modelsMetadata', function () {
+//     $config = $this->getConfig();
+//     return new MetaDataAdapter([
+//         'metaDataDir' => $config->application->cacheDir . 'metaData/'
+//     ]);
+// });
 
 /**
  * Start the session the first time some component request the session service

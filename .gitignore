@@ -3,6 +3,7 @@
 composer.lock
 composer.phar
 vendor/
+uploads/
 data.txt
 cache/volt/*.php
 cache/metaData/*.php

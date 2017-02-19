@@ -1,4 +1,3 @@
-
 <div class="col-lg-6">
 	<div class="panel panel-default">
 		<a href="/social/user/{{user.id}}">
@@ -6,7 +5,8 @@
 
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>{{user.name}}</h3>
+						<h3 class="pull-left">{{user.name}}</h3>
+						<button class="pull-right btn btn-primary">FOLLOW</button>
 					</div>
 					<div class="col-lg-4">
 						<div class="thumbnail">

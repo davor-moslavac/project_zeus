@@ -29,6 +29,7 @@ class SocialController extends ControllerBase
         $this->view->title = "Users";
 
         $users = $this->view->users = Users::find();
+
     }
 
 
