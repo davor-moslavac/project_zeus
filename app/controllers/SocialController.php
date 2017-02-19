@@ -28,7 +28,7 @@ class SocialController extends ControllerBase
     {
         $this->view->title = "Users";
 
-        $this->view->users = Users::find();
+        $users = $this->view->users = Users::find();
     }
 
 
@@ -37,6 +37,17 @@ class SocialController extends ControllerBase
         if (is_null($id) || !is_numeric($id)) $this->response->redirect();
 
         $this->view->user = $user = Users::findFirstById($id);
+    }
+
+    public function messagesAction()
+    {
+
+    }
+
+    public function messageAction($id = null)
+    {
+        if (is_null($id) || !is_numeric($id)) $this->response->redirect();
+
     }
 
     /**

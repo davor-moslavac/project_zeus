@@ -10,7 +10,7 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="thumbnail">
-							<img src="/img/shield.png" alt="shield">
+							<img src="/uploads/avatars/{{user.img}}" alt="{{user.name}}">
 						</div>
 					</div>
 					<div class="col-lg-8">

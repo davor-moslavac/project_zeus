@@ -40,6 +40,12 @@ class Users extends Model
      *
      * @var string
      */
+    public $img;
+    
+    /**
+     *
+     * @var string
+     */
     public $mustChangePassword;
 
     /**

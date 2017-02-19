@@ -38,12 +38,44 @@ class SessionController extends ControllerBase
 
             if ($form->isValid($this->request->getPost()) != false) {
 
-                $user = new Users([
-                    'name' => $this->request->getPost('name', 'striptags'),
-                    'email' => $this->request->getPost('email'),
-                    'password' => $this->security->hash($this->request->getPost('password')),
-                    'profilesId' => 2
-                ]);
+                $user = new Users();
+
+                // Avatar
+                if ($this->request->hasFiles(TRUE)) {
+                    $uFiles = $this->request->getUploadedFiles();
+
+                    foreach ($uFiles as $file) {
+
+                        if (!$file->isUploadedFile()) continue;
+                        
+                        $ext = strtolower($file->getExtension());
+
+                        if (!preg_match("/^image\/(jpeg|png|gif|svg\+xml)$/", $file->getRealType())) {
+                            $this->flash->error("File type not permitted! Please upload a JPG, PNG, GIF or SVG file!");
+                            break;
+                        }
+
+                        if (!strlen($ext)) {
+                            $this->flash->error("Missing extension!");
+                            break;
+                        }
+
+                        $img = substr($file->getName(), 0, -(strlen($ext)+1)); // Strip extension
+                        $img = substr($img, 0, 35-strlen($ext)); // Clip too long names
+                        $img = strtolower(str_replace([' ', '_'], '-', $img)) . uniqid("-") .".". $ext; // Replace spaces, set to lowercase and append uniqid and extension
+
+                        if (!is_dir("uploads/avatars")) mkdir("uploads/avatars", 0777, TRUE);
+
+                        $file->moveTo("uploads/avatars/". $img);
+
+                        $user->img = $img;
+                    }
+                }
+
+                $user->name = $this->request->getPost('name', 'striptags');
+                $user->email = $this->request->getPost('email');
+                $user->password = $this->security->hash($this->request->getPost('password'));
+                $user->profilesId = 2;
 
                 if ($user->save()) {
                     return $this->dispatcher->forward([
