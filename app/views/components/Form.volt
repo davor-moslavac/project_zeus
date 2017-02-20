@@ -27,7 +27,7 @@
 				{{element}}
 			</div>
 		</div>
-
+	{#
 	{% elseif type is 'checkbox' %}
 
 		<div data-id="{{element.getLabel()}}" class="form-group {% if messages|length > 0 %} has-error{% endif %}">
@@ -38,7 +38,7 @@
 				{{element}}
 			</div>
 		</div>
-
+	#}
 	{% elseif type is 'check' %}
 		<div class="form-group {% if messages|length > 0 %} has-error{% endif %}">
 			<div class="col-lg-offset-3 col-lg-9 col-md-offset-3 col-md-9 col-sm-offset-4 col-sm-8 col-xs-offset-0 col-xs-12">
