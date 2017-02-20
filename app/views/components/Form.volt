@@ -28,6 +28,17 @@
 			</div>
 		</div>
 
+	{% elseif type is 'checkbox' %}
+
+		<div data-id="{{element.getLabel()}}" class="form-group {% if messages|length > 0 %} has-error{% endif %}">
+			<div class="col-xs-12">
+				<label for="{{element.getName()}}">{{element.getLabel()}}{% if messages|length > 0 %} ({% for message in messages %}{{message}}{% endfor %}) {% endif %}</label>
+			</div>
+			<div class="btn-group col-xs-12" data-toggle="buttons">
+				{{element}}
+			</div>
+		</div>
+
 	{% elseif type is 'check' %}
 		<div class="form-group {% if messages|length > 0 %} has-error{% endif %}">
 			<div class="col-lg-offset-3 col-lg-9 col-md-offset-3 col-md-9 col-sm-offset-4 col-sm-8 col-xs-offset-0 col-xs-12">

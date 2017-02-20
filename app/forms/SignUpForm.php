@@ -49,6 +49,24 @@ class SignUpForm extends FormBase
 
         $this->add($email);
 
+        // Interests
+        //$this->add((new Element\MultiCheckbox('interests', ['1' => '1', '2' => '2', '3' => '3', '4' => '4']))->setLabel('Interests')->addValidator(new PresenceOf(['message' => 'field-is-required'])));
+
+        // Date of birth
+        // $dobKey = 'dob';
+        // $dob = new Element\DateOfBirth($dobKey);
+        // $dob
+        //     ->setLabel("Date of birth")
+        //     ->setDefault([
+        //         'D' => $this->request->getPost($dobKey.'D'),
+        //         'M' => $this->request->getPost($dobKey.'M'),
+        //         'Y' => $this->request->getPost($dobKey.'Y')
+        //     ])
+        //     ->setAttributes(['class' => 'form-control'])
+        //     ->setUserOption('type', 'select')
+        //     ->setUserOption('help', "We need this to confirm you are at least 18.");
+        // $this->add($dob);
+
 
         $img = new File('img', ['class' => 'form-control']);
         $img->setLabel('Avatar');

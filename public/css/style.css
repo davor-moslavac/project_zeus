@@ -3,6 +3,47 @@ html {
 	min-height: 100%;
 }
 
+.btn-checkbox {
+    height: 32px;
+    line-height: 32px;
+    border-radius: 0;
+    padding: 0;
+
+    background: #ad1d28;
+    
+    border-right: 1px solid #fff;
+}
+
+.btn-checkbox input[type=checkbox] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.btn-checkbox:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    border-left: none;
+}
+
+.btn-checkbox:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    border-right: none;
+    margin: 0;
+}
+
+.btn-checkbox.active {
+    color: #fff;
+    background: #33a466;
+}
+
 .navbar {
 	border-radius: 0;
 }
