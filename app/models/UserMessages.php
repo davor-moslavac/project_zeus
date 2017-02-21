@@ -87,4 +87,10 @@ class UserMessages extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
+
+    //temp solution
+    public static function getMessages($user_id = NULL, $user_id_2 = NULL) {
+        return parent::find(["sender_id = ?1 OR receiver_id = ?1 AND sender_id = ?2 OR receiver_id = ?2", "bind" => [1 => $user_id, 2 => $user_id_2], "order" => "sent_time DESC"]);
+    }
+
 }
