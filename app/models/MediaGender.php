@@ -1,4 +1,5 @@
 <?php
+namespace MediaRatings\Models;
 
 class MediaGender extends \Phalcon\Mvc\Model
 {

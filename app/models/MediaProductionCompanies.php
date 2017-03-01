@@ -1,5 +1,5 @@
 <?php
-
+namespace MediaRatings\Models;
 class MediaProductionCompanies extends \Phalcon\Mvc\Model
 {
 

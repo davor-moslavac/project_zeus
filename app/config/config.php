@@ -3,6 +3,12 @@
 use Phalcon\Config;
 use Phalcon\Logger;
 
+/**
+ * Define constants
+ */
+$baseDir = realpath(__DIR__ . '/../..');
+$appDir = $baseDir . '/app';
+
 return new Config([
     'database' => [
         'adapter' => 'Mysql',
@@ -12,13 +18,13 @@ return new Config([
         'dbname' => 'vokuro'
     ],
     'application' => [
-        'controllersDir' => APP_PATH . '/controllers/',
-        'modelsDir'      => APP_PATH . '/models/',
-        'formsDir'       => APP_PATH . '/forms/',
-        'viewsDir'       => APP_PATH . '/views/',
-        'libraryDir'     => APP_PATH . '/library/',
-        'pluginsDir'     => APP_PATH . '/plugins/',
-        'cacheDir'       => BASE_PATH . '/cache/',
+        'controllersDir' => $appDir . '/controllers/',
+        'modelsDir'      => $appDir . '/models/',
+        'formsDir'       => $appDir . '/forms/',
+        'viewsDir'       => $appDir . '/views/',
+        'libraryDir'     => $appDir . '/library/',
+        'pluginsDir'     => $appDir . '/plugins/',
+        'cacheDir'       => $appDir . '/cache/',
         'baseUri'        => '/',
         'publicUrl'      => 'MediaRatings.phalconphp.com',
         'cryptSalt'      => 'eEAfR|_&G&f,+vU]:jFr!!A&+71w1Ms9~8_4L!<@[N@DyaIP_2My|:+.u>/6m,$D'
@@ -39,7 +45,7 @@ return new Config([
         'AWSSecretKey' => ''
     ],
     'logger' => [
-        'path'     => BASE_PATH . '/logs/',
+        'path'     => $baseDir . '/logs/',
         'format'   => '%date% [%type%] %message%',
         'date'     => 'D j H:i:s',
         'logLevel' => Logger::DEBUG,

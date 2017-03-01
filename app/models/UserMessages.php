@@ -1,5 +1,5 @@
 <?php
-
+namespace MediaRatings\Models;
 class UserMessages extends \Phalcon\Mvc\Model
 {
 

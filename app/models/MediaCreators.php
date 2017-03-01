@@ -1,5 +1,5 @@
 <?php
-
+namespace MediaRatings\Models;
 class MediaCreators extends \Phalcon\Mvc\Model
 {
 

@@ -8,6 +8,8 @@
 
 namespace MediaRatings\Import;
 
+use MediaRatings\Models\GenderMediaType;
+
 
 class MiscImport extends BaseImport
 {
@@ -17,9 +19,12 @@ class MiscImport extends BaseImport
      */
     public function ImportMediaGenres() {
         $response = $this->getDatabaseMovieResponse("genre/movie/list");
-        if (isset($response)) {
-            return $response['genres'];
+        if (isset($response) && isset($response['genres'])) {
+            foreach ($response['genres'] as $genre) {
+                $obj = new  GenderMediaType();
+                //TODO - check with Davor about array saving
+                $obj->save($genre);
+            }
         }
-        return $response;
     }
 }

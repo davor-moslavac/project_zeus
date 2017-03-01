@@ -1,5 +1,5 @@
 <?php
-
+namespace MediaRatings\Models;
 class MediaStatusType extends \Phalcon\Mvc\Model
 {
 
