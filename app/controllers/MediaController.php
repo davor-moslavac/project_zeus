@@ -21,10 +21,10 @@ class MediaController extends ControllerBase
     {
         if (is_null($id) || !is_numeric($id)) $this->response->redirect();
         $media = Media::findFirstById($id);
-        //if($media != null && $media->is_detail_downloaded == false){
+        if($media != null && $media->is_detail_downloaded == false){
             $miscImport = new Import\SeriesImport();
             $status = $miscImport->ImportSeriesDetails($media);
-       // }
+        }
         $this->view->media = $media;
     }
 

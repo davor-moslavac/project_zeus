@@ -98,7 +98,7 @@ class SeriesImport  extends BaseImport
                 $productionCompanies[] = $production_company;
             }
             $series->productionCompanies = $productionCompanies;
-
+            $series->is_detail_downloaded = true;
             if ($series->save() === false) {
                 echo "Umh, We can't store series detail right now: \n";
                 $messages = $series->getMessages();
