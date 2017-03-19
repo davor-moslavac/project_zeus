@@ -137,7 +137,8 @@ class Media extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        
+        $this->hasMany('id', __NAMESPACE__ . '\MediaGender', 'media_id', array('alias' => 'mediaGenders'));
+        //$this->hasManyToMany('id', __NAMESPACE__ . '\MediaGender', 'media_id', 'gender_id', __NAMESPACE__ . '\GenderMediaType', 'id');
     }
 
     /**

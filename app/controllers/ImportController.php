@@ -23,11 +23,23 @@ class ImportController extends ControllerBase
     /**
      * Default action.
      */
-    public function indexAction()
+    public function miscImportAction()
     {
         $this->view->disable();
         $miscImport = new Import\MiscImport();
         $res = $miscImport->ImportMediaGenres();
+        $response = new \Phalcon\Http\Response();
+        //Set the content of the response
+        $response->setContent(json_encode($res));
+        //Return the response
+        return $response;
+    }
+
+    public function seriesListImportAction()
+    {
+        $this->view->disable();
+        $miscImport = new Import\SeriesImport();
+        $res = $miscImport->ImportListOfSeries();
         $response = new \Phalcon\Http\Response();
         //Set the content of the response
         $response->setContent(json_encode($res));

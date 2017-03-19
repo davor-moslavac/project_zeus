@@ -57,6 +57,6 @@ return new Config([
     [
         'apiKey' => 'd939353f7e926e52ce71066b87971f5d',
         'apiBaseUrl' => 'https://api.themoviedb.org/3/',
-        'image_url' => 'http://image.tmdb.org/t/p/original/' //copied from configurattion response
+        'image_url' => 'http://image.tmdb.org/t/p/original' //copied from configurattion response
     ]
 ]);

@@ -32,7 +32,7 @@ class GenderMediaType extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->hasMany('id', __NAMESPACE__ . '\MediaGender', 'gender_id', ['alias' => 'MediaGender']);
+        //$this->hasManyToMany('id', __NAMESPACE__ . '\MediaGender', 'gender_id', 'media_id', __NAMESPACE__ . '\Media', 'id', array('alias' => 'media'));
     }
 
     /**

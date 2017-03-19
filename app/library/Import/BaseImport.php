@@ -15,8 +15,6 @@ class BaseImport  extends Component
     public function getDatabaseMovieResponse($queryParam) {
         $dbAPI = $this->config->movieDatabase;
         $url = sprintf('%s%s?api_key=%s', $dbAPI->apiBaseUrl, $queryParam, $dbAPI->apiKey);
-
-
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -36,7 +34,7 @@ class BaseImport  extends Component
         curl_close($curl);
 
         if ($err) {
-            return null;
+            return $err;
             //TODO: log error;
         } else {
             return json_decode($response, JSON_NUMERIC_CHECK);

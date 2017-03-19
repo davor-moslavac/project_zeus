@@ -32,7 +32,8 @@ class MediaGender extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        
+        $this->belongsTo('gender_id', __NAMESPACE__ . '\GenderMediaType', 'id');
+        $this->belongsTo('media_id', __NAMESPACE__ . '\Media', 'id');
     }
 
     /**
