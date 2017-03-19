@@ -47,12 +47,12 @@ class BaseImport  extends Component
     }
 
     public function handleStatusType($statusName){
-        $status = Models\MediaStatusType::findFirst("name = '". $statusName ."'");
-        if(!isset($status)){
+        $status = Models\MediaStatusType::findFirstByName($statusName);
+        if(!$status){
             $new_status = new Models\MediaStatusType();
             $new_status->name = $statusName;
             if ($new_status->save() === true) {
-                $status = Models\MediaStatusType::findFirst("name = '". $statusName ."'");
+                $status = Models\MediaStatusType::findFirstByName($statusName);
             }
         }
         return $status->id;
