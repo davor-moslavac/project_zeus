@@ -9,3 +9,4 @@ app/cache/volt/*.php
 app/cache/metaData/*.php
 app/config/config.dev.php
 /nbproject/
+*.compiled
