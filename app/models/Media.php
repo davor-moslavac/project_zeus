@@ -72,7 +72,7 @@ class Media extends \Phalcon\Mvc\Model
     /**
      *
      * @var integer
-     * @Column(type="integer", length=10, nullable=false)
+     * @Column(type="integer", length=10, nullable=true)
      */
     public $status_type_id;
 
@@ -126,11 +126,18 @@ class Media extends \Phalcon\Mvc\Model
     public $language;
 
     /**
+ *
+ * @var string
+ * @Column(type="string", length=1, nullable=true)
+ */
+    public $adult;
+
+    /**
      *
      * @var string
      * @Column(type="string", length=1, nullable=false)
      */
-    public $adult;
+    public $is_detail_downloaded;
 
     /**
      * Initialize method for model.
