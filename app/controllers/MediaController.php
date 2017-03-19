@@ -2,6 +2,7 @@
 namespace MediaRatings\Controllers;
 
 use MediaRatings\Models\Media;
+use MediaRatings\Import;
 
 /**
  * Display the "About" page.
@@ -19,8 +20,12 @@ class MediaController extends ControllerBase
     public function indexAction($id = null)
     {
         if (is_null($id) || !is_numeric($id)) $this->response->redirect();
-
-        $this->view->media = $media = Media::findFirstById($id);
+        $media = Media::findFirstById($id);
+        //if($media != null && $media->is_detail_downloaded == false){
+            $miscImport = new Import\SeriesImport();
+            $status = $miscImport->ImportSeriesDetails($media);
+       // }
+        $this->view->media = $media;
     }
 
     /**
@@ -60,7 +65,7 @@ class MediaController extends ControllerBase
     {
         $this->view->title = "Anime";
 
-        $this->view->medias = Media::find(["conditions" => "type_id = 2"]);
+        $this->view->medias = Media::find(["conditions" => "type_id = 3"]);
     }
     
 }

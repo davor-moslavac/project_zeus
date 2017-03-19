@@ -1,5 +1,7 @@
 <?php
+
 namespace MediaRatings\Models;
+
 class MediaProductionCompanies extends \Phalcon\Mvc\Model
 {
 
@@ -11,13 +13,6 @@ class MediaProductionCompanies extends \Phalcon\Mvc\Model
      * @Column(type="integer", length=20, nullable=false)
      */
     public $id;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", length=1024, nullable=false)
-     */
-    public $name;
 
     /**
      *
@@ -38,17 +33,8 @@ class MediaProductionCompanies extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        
-    }
-
-    /**
-     * Returns table name mapped in the model.
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return 'media_production_companies';
+        $this->belongsTo('production_company_id', __NAMESPACE__ . '\ProductionCompany', 'id');
+        $this->belongsTo('media_id', __NAMESPACE__ . '\Media', 'id');
     }
 
     /**
@@ -71,6 +57,16 @@ class MediaProductionCompanies extends \Phalcon\Mvc\Model
     public static function findFirst($parameters = null)
     {
         return parent::findFirst($parameters);
+    }
+
+    /**
+     * Returns table name mapped in the model.
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return 'media_production_companies';
     }
 
 }

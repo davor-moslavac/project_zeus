@@ -1,63 +1,32 @@
 <?php
+
 namespace MediaRatings\Models;
-class MediaSeriesDetail extends \Phalcon\Mvc\Model
+
+class ProductionCompany extends \Phalcon\Mvc\Model
 {
 
     /**
      *
      * @var integer
      * @Primary
-     * @Column(type="integer", length=20, nullable=false)
+     * @Identity
+     * @Column(type="integer", length=10, nullable=false)
      */
     public $id;
 
     /**
      *
-     * @var integer
-     * @Column(type="integer", length=10, nullable=false)
-     */
-    public $number_of_seasons;
-
-    /**
-     *
-     * @var integer
-     * @Column(type="integer", length=10, nullable=false)
-     */
-    public $number_of_episode;
-
-    /**
-     *
      * @var string
-     * @Column(type="string", length=100, nullable=false)
+     * @Column(type="string", length=256, nullable=false)
      */
-    public $origin_country;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", length=25, nullable=true)
-     */
-    public $episode_run_time;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", length=1, nullable=true)
-     */
-    public $in_production;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", nullable=true)
-     */
-    public $end_date;
+    public $name;
 
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
+        $this->hasMany('id', 'MediaRatings\Models\MediaProductionCompanies', 'production_company_id', ['alias' => 'mediaProductionCompanies']);
     }
 
     /**
@@ -67,14 +36,14 @@ class MediaSeriesDetail extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'media_series_detail';
+        return 'production_company';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return MediaSeriesDetail[]|MediaSeriesDetail
+     * @return ProductionCompany[]|ProductionCompany
      */
     public static function find($parameters = null)
     {
@@ -85,7 +54,7 @@ class MediaSeriesDetail extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return MediaSeriesDetail
+     * @return ProductionCompany
      */
     public static function findFirst($parameters = null)
     {
