@@ -10,6 +10,8 @@
 		{% include "components/UserElement.volt" %}
 	{% endfor %}
 	{% elseif router.getControllerName() == "media" %}
+		{% for media in medias %}
 		{% include "components/MediaElement.volt" %}
+		{% endfor %}
 	{% endif %}
 </div>

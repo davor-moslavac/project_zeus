@@ -37,7 +37,7 @@
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdownBrowse">
 						{%- set media = [
-						'All': '/media',
+						'All': '/media/all',
 						'Movies': '/media/movies',
 						'TV Shows': '/media/tvshows',
 						'Animes': '/media/animes'
