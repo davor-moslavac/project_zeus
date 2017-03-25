@@ -9,7 +9,6 @@
 namespace MediaRatings\Import;
 use MediaRatings\Models;
 use Phalcon\Mvc\User\Component;
-use Phalcon\Paginator\Adapter\Model;
 
 class BaseImport  extends Component
 {
@@ -30,19 +29,23 @@ class BaseImport  extends Component
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_POSTFIELDS => "{}",
+            CURLOPT_POSTFIELDS => "{}"
         ));
 
-        $response = curl_exec($curl);
+        $response = json_decode(curl_exec($curl), JSON_NUMERIC_CHECK);
         $err = curl_error($curl);
-
+        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
 
-        if ($err) {
-            return $err;
-            //TODO: log error and handle different kinds of response;
+
+        if ($httpcode != 200) {
+            $this->logger->error(sprintf('Import (TMDB): Status code: %s, Status message: %s; Url: %s;', $response['status_code'], $response['status_message'], $url));
+            return null;
+        } else if ($err) {
+            $this->logger->error(sprintf('Import (TMDB): Error: %s; Url: %s ', $err, $url));
+            return null;
         } else {
-            return json_decode($response, JSON_NUMERIC_CHECK);
+            return $response;
         }
     }
 
