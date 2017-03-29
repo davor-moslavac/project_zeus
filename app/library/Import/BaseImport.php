@@ -7,37 +7,42 @@
  */
 
 namespace MediaRatings\Import;
-use MediaRatings\Models;
 use Phalcon\Mvc\User\Component;
 
 class BaseImport  extends Component
 {
-    public function getDatabaseMovieResponse($queryParam) {
+    private $requestLatency = 0.2;
+    public function __construct()
+    {
+        $date = new \DateTime();
+        $this->session->set("last-request-time-check", $date);
+    }
+
+    public function getDatabaseMovieResponse($queryParam)
+    {
+        $this->waitFoRateLimit();
         $dbAPI = $this->config->movieDatabase;
         $query_prefix = '?';
         if (strpos($queryParam, '?') !== false) {
             $query_prefix = '&';
         }
-        $url = sprintf('%s%s%sapi_key=%s', $dbAPI->apiBaseUrl, $queryParam, $query_prefix,  $dbAPI->apiKey);
-        $curl = curl_init();
+        $url = sprintf('%s%s%sapi_key=%s', $dbAPI->apiBaseUrl, $queryParam, $query_prefix, $dbAPI->apiKey);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_POSTFIELDS => "{}"
-        ));
+        list($headerContent, $response) = explode("\r\n\r\n", $response, 2);
+        $headers = $this->processHeaders($headerContent);
 
-        $response = json_decode(curl_exec($curl), JSON_NUMERIC_CHECK);
-        $err = curl_error($curl);
-        $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
+        $limitRemaining = $headers['X-RateLimit-Remaining'];
+        $limitReset = $headers['X-RateLimit-Reset'];
 
-
+        $this->updateRateLimit($limitRemaining, $limitReset);
         if ($httpcode != 200) {
             $this->logger->error(sprintf('Import (TMDB): Status code: %s, Status message: %s; Url: %s;', $response['status_code'], $response['status_message'], $url));
             return null;
@@ -45,19 +50,40 @@ class BaseImport  extends Component
             $this->logger->error(sprintf('Import (TMDB): Error: %s; Url: %s ', $err, $url));
             return null;
         } else {
-            return $response;
+            return json_decode($response, JSON_NUMERIC_CHECK);
         }
     }
 
-    public function handleStatusType($statusName){
-        $status = Models\MediaStatusType::findFirstByName($statusName);
-        if(!$status){
-            $new_status = new Models\MediaStatusType();
-            $new_status->name = $statusName;
-            if ($new_status->save() === true) {
-                $status = Models\MediaStatusType::findFirstByName($statusName);
+    private function waitFoRateLimit(){
+        $now = new \DateTime();
+        $next_request_time = $this->session->get("next-request-time");
+        if($next_request_time > $now){
+            $time = $next_request_time - $now;
+            $this->logger->debug('Sleep for: ' . $time . ' seconds.');
+            sleep($time);
+        }
+    }
+
+    private function updateRateLimit($limitRemaining, $limitReset){
+        $resetTime = new \DateTime();
+        $now = new \DateTime();
+        $resetTime = $resetTime->setTimestamp($limitReset);
+        $difference = ($resetTime->getTimestamp() - $now->getTimestamp()) /(1.0 + $limitRemaining);
+        $delay =  $difference - $this->requestLatency;
+        $now = $now->setTimestamp($now->getTimestamp() + $delay);
+        $this->session->set("next-request-time", $now);
+    }
+
+    private function processHeaders($headerContent){
+        $headers = array();
+        foreach (explode("\r\n", $headerContent) as $i => $line) {
+            if($i===0){
+                $headers['http_code'] = $line;
+            }else{
+                list($key,$value) = explode(':', $line);
+                $headers[$key] = $value;
             }
         }
-        return $status->id;
+        return $headers;
     }
 }

@@ -39,7 +39,7 @@ class ImportController extends ControllerBase
     {
         $this->view->disable();
         $miscImport = new Import\SeriesImport();
-        $res = $miscImport->ImportListOfSeries();
+        $res = $miscImport->ImportListOfSeries(true);
         $response = new \Phalcon\Http\Response();
         //Set the content of the response
         $response->setContent(json_encode($res));
