@@ -43,14 +43,15 @@ class BaseImport  extends Component
         $limitReset = $headers['X-RateLimit-Reset'];
 
         $this->updateRateLimit($limitRemaining, $limitReset);
+        $result = json_decode($response, JSON_NUMERIC_CHECK);
         if ($httpcode != 200) {
-            $this->logger->error(sprintf('Import (TMDB): Status code: %s, Status message: %s; Url: %s;', $response['status_code'], $response['status_message'], $url));
+            $this->logger->error(sprintf('Import (TMDB): Status code: %s, Status message: %s; Url: %s;', $result['status_code'], $result['status_message'], $url));
             return null;
         } else if ($err) {
             $this->logger->error(sprintf('Import (TMDB): Error: %s; Url: %s ', $err, $url));
             return null;
         } else {
-            return json_decode($response, JSON_NUMERIC_CHECK);
+            return $result;
         }
     }
 

@@ -29,7 +29,6 @@ class MiscImport extends BaseImport
             }
             foreach ($genres as $genre) {
                 $obj = new  GenderMediaType();
-                //TODO - check with Davor about array saving
                 $obj->save($genre);
             }
             return true;
