@@ -46,4 +46,16 @@ class ImportController extends ControllerBase
         //Return the response
         return $response;
     }
+
+    public function moviesListImportAction()
+    {
+        $this->view->disable();
+        $miscImport = new Import\MoviesImport();
+        $res = $miscImport->ImportListOfPopularMovies(true);
+        $response = new \Phalcon\Http\Response();
+        //Set the content of the response
+        $response->setContent(json_encode($res));
+        //Return the response
+        return $response;
+    }
 }

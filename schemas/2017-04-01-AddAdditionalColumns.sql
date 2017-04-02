@@ -1,0 +1,1 @@
+ALTER TABLE `media_series_season` ADD `trailer_url` VARCHAR(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `season_number`;

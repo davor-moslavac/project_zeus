@@ -65,7 +65,7 @@ class SeriesImport  extends BaseImport
                     }
                 }
                 $page++;
-                if($page == 10){
+                if($page == 4){
                     break;
                 }
             } while ($pageNumber > 1);
@@ -92,13 +92,13 @@ class SeriesImport  extends BaseImport
         return false;
     }
 
-    private function getSeriesDetails($series){
-        $response = $this->getDatabaseMovieResponse("tv/". $series->external_id);;
+    private function getSeriesDetails(Models\Media $series){
+        $response = $this->getDatabaseMovieResponse("tv/". $series->getExternalId() . '?append_to_response=videos');
         if (isset($response)) {
             $creators = array();
             foreach ($response['created_by'] as $creator) {
                 $media_creator = new Models\MediaCreators();
-                $media_creator->setMediaId($series->id);
+                $media_creator->setMediaId($series->getId());
                 $media_creator->setExternalId($creator['id']);
                 $media_creator->setName($creator['name']);
                 $media_creator->setProfilePath($creator['profile_path']);
@@ -106,7 +106,7 @@ class SeriesImport  extends BaseImport
             }
             $series->mediaCreators = $creators;
             $media_series_detail = new Models\MediaSeriesDetail();
-            $media_series_detail->setId($series->id);
+            $media_series_detail->setId($series->getId());
             if(isset($response['last_air_date'])) {
                 $media_series_detail->setEndDate($response['last_air_date']);
             }
@@ -116,21 +116,23 @@ class SeriesImport  extends BaseImport
             $media_series_detail->setNumberOfSeasons($response['number_of_seasons']);
             $media_series_detail->setOriginCountry(implode(', ', $response['origin_country']));
             $series->mediaSeriesDetail = $media_series_detail;
-            $series->homepage_path = $response['homepage'];
+            $series->setHomepagePath($response['homepage']);
+            $series->setTrailerUrl($this->getTrailerUrl($response['videos']));
             $mediaSeriesSeasons = array();
             foreach ($response['seasons'] as $season) {
                 $media_series_season = new Models\MediaSeriesSeason();
-                $media_series_season->setMediaId($series->id);
+                $media_series_season->setMediaId($series->getId());
                 $media_series_season->setExternalId($season['id']);
                 $media_series_season->setAirDate($season['air_date']);
                 $media_series_season->setEpisodeCount($season['episode_count']);
                 $media_series_season->setPosterPath($season['poster_path']);
                 $media_series_season->setSeasonNumber($season['season_number']);
-
+                $media_series_season = $this->updateSeriesSeasonWithEpisodes($series->getExternalId(), $media_series_season);
                 $mediaSeriesSeasons[] = $media_series_season;
             }
             $series->mediaSeriesSeason = $mediaSeriesSeasons;
-            $series->status_type_id = Models\MediaStatusType::upsertStatusType($response['status']);
+            $statusTypeId = Models\MediaStatusType::upsertStatusType($response['status']);
+            $series->setStatusTypeId($statusTypeId);;
             $productionCompanies = array();
             foreach ($response['production_companies'] as $company) {
                 $production_company = new Models\ProductionCompany();
@@ -139,36 +141,36 @@ class SeriesImport  extends BaseImport
                 $productionCompanies[] = $production_company;
             }
             $series->productionCompanies = $productionCompanies;
-            $series->is_detail_downloaded = true;
+            $series->setIsDetailDownloaded(true);
         }
         return $series;
     }
 
-     function getSeriesSeasonEpisodes($media_id, $season){
-        try
+     function updateSeriesSeasonWithEpisodes($media_id, $season){
+        $episodes = array();
+         try
         {
-            for ($i = 1; $i <= $season->episode_count; $i++) {
-                $response = $this->getDatabaseMovieResponse("tv/" . $media_id . '/season/' . $season->season_number . '/episode/' . $i);
-                if (isset($response)) {
+            $response = $this->getDatabaseMovieResponse("tv/" . $media_id . '/season/' . $season->season_number . '?append_to_response=videos');
+            if (isset($response)) {
+                $season->setTrailerUrl($this->getTrailerUrl($response['videos']));
+                foreach ($response['episodes'] as $response_episode) {
                     $episode = new Models\MediaSeriesSeasonEpisodes();
                     $episode->setSeasonId($season->id);
-                    $episode->setExternalId($response['id']);
-                    $episode->setAirDate($response['air_date']);
-                    $episode->setEpisodeNumber($response['episode_number']);
-                    $episode->setName($response['name']);
-                    $episode->setPlot($response['overview']);
-                    $episode->setStillPath($response['still_path']);
-                    $episode->setVoteAverage($response['vote_average']);
-                    $episode->setVoteCount($response['vote_count']);
-                    if ($episode->save() === false) {
-                        throw new Exception(implode(';', $episode->getMessages()));
-                    }
+                    $episode->setExternalId($response_episode['id']);
+                    $episode->setAirDate($response_episode['air_date']);
+                    $episode->setEpisodeNumber($response_episode['episode_number']);
+                    $episode->setName($response_episode['name']);
+                    $episode->setPlot($response_episode['overview']);
+                    $episode->setStillPath($response_episode['still_path']);
+                    $episode->setVoteAverage($response_episode['vote_average']);
+                    $episode->setVoteCount($response_episode['vote_count']);
+                    $episodes[] = $episode;
                 }
+                $season->mediaSeriesSeasonEpisodes = $episodes;
             }
-            return true;
         } catch (Exception $e) {
             $this->logger->error('Import (TMDB): ' . $e);
         }
-        return false;
+        return $season;
     }
 }

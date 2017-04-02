@@ -55,6 +55,27 @@ class BaseImport  extends Component
         }
     }
 
+    public function getTrailerUrl($videos){
+        if(isset($videos) && isset($videos['results'])) {
+            if(count($videos['results']) > 0) {
+                $video = $videos['results'][0];
+                $filteredVideos = array_values(array_filter($videos['results'], function ($value) {
+                    return ($value['type'] == 'Trailer');
+                }));
+
+                if (isset($filteredVideos) && count($filteredVideos) > 0) {
+                    $video = $filteredVideos[0];
+                }
+
+                //TODO: check for other providers
+                if ($video['site'] == 'YouTube') {
+                    return 'https://youtu.be/' . $video['key'];
+                }
+            }
+        }
+        return null;
+    }
+
     private function waitFoRateLimit(){
         $now = new \DateTime();
         $next_request_time = $this->session->get("next-request-time");
