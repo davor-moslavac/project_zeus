@@ -189,6 +189,10 @@ class Users extends Model
                 'message' => 'User cannot be deleted because he/she has activity in the system'
             ]
         ]);
+
+        $this->hasMany('id', __NAMESPACE__ . '\UserSocial', 'user_id', [
+            'alias' => 'userSocials'
+        ]);
     }
 
     public static function find($parameters = null)
