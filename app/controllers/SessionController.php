@@ -14,6 +14,12 @@ use MediaRatings\Models\ResetPasswords;
 class SessionController extends ControllerBase
 {
 
+    function onConstruct(){
+        $config   = dirname(__DIR__) . '/config/hybridAuth.php';
+        require_once(dirname(__DIR__) . "/library/HybridAuth/Hybrid/Auth.php");
+        require_once( dirname(__DIR__) . "/library/HybridAuth/Hybrid/Endpoint.php" );
+        $this->hybridauth = new \Hybrid_Auth($config);
+    }
     /**
      * Default action. Set the public layout (layouts/public.volt)
      */
@@ -25,6 +31,8 @@ class SessionController extends ControllerBase
     public function indexAction()
     {
 
+
+        \Hybrid_Endpoint::process();
     }
 
     /**
@@ -179,5 +187,24 @@ class SessionController extends ControllerBase
         $this->auth->remove();
 
         return $this->response->redirect('index');
+    }
+
+    public function loginSocialAction($type){
+        try
+        {
+            $provider = $this->hybridauth->authenticate($type);
+
+            // get the user profile
+            $ser_profile = $provider->getUserProfile();
+            $this->session->set('auth-identity', [
+                'id' => $ser_profile->identifier,
+                'name' => $ser_profile->displayName,
+                'profile' => 'Users'
+            ]);
+            return $this->response->redirect('index');
+        }
+        catch( \Exception $e ){
+            $this->logger->error($e->getMessage());
+        }
     }
 }

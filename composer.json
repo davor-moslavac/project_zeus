@@ -6,7 +6,7 @@
         "MediaRatings"
     ],
     "type": "library",
-    "homepage": "",
+    "homepage": "http://project-zeus.azurewebsites.net/",
     "authors" : [
         {
             "name" : "Davor Moslavac",
@@ -14,13 +14,15 @@
         },
         {
             "name" : "Denis Bračun",
-            "email" : ""
+            "email" : "dbracun987@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.5",
         "ext-phalcon": ">=3.0.0",
         "swiftmailer/swiftmailer": "^5.4",
-        "aws/aws-sdk-php": "~3.0"
+        "aws/aws-sdk-php": "~3.0",
+        "ext-curl": "*",
+        "facebook/graph-sdk": "^5.4"
     }
 }
