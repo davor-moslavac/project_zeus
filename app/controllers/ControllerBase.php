@@ -25,6 +25,8 @@ class ControllerBase extends Controller
                     ->addCss('/third-party/css/bootstrap.min.css', true, false)
                     ->addCss('/third-party/css/theme.min.css', true, false)
                     ->addCss('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Condensed:300,400,500,700,900', false)
+                    ->addCss('/css/font-awesome.min.css', true, false)
+                    ->addCss('/css/bootstrap-social.css', true, false)
                     ->addCss('/css/style.css', true, false);
 
         $this->assets->collection('scripts')
